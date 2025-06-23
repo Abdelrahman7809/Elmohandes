@@ -1,0 +1,122 @@
+/* إعدادات عامة */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* العناوين */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* الحاويات */
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* الأزرار */
+button, .btn, .action-btn, a {
+  display: inline-block;
+  background-color: #2e2e2e;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+button:hover, .btn:hover, .action-btn:hover, a:hover {
+  background-color: #444;
+}
+
+/* الأزرار الخاصة */
+.confirm-btn {
+  background-color: green;
+}
+.delete-btn {
+  background-color: red;
+}
+.clear-btn {
+  background-color: #c0392b;
+}
+
+/* حقول الإدخال */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* نمط المجموعات */
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+.input-group i {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #777;
+}
+.input-group input {
+  padding-left: 35px;
+}
+
+/* جدول السلة */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+th {
+  background-color: #f0f0f0;
+}
+
+/* الاستجابة للأجهزة الصغيرة */
+@media (max-width: 768px) {
+  .btns {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .input-group i {
+    left: 8px;
+  }
+
+  .form-titel {
+    font-size: 20px;
+  }
+
+  .input-group input {
+    font-size: 15px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    font-size: 14px;
+  }
+}

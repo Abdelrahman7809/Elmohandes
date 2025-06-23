@@ -1,0 +1,749 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #f8f9fa;
+        font-family: sans-serif;
+}
+.header {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+
+}
+
+.header img {
+    max-height: 50px;
+    width: auto;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 1rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
+
+/* nav a:hover {
+    background-color: #555;
+} */
+
+.container-a {
+    display: flex;
+    align-items: center;
+}
+
+.container-a a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
+
+.container-cards {
+    padding: 1rem;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.parent-img,
+.con-c-2,
+.con-c-3,
+.con-c-4 .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1rem;
+}
+
+.parent-img > div,
+.con-c-2 > div,
+.con-c-3 > div,
+.con-c-4 .img99 {
+    border: 1px solid #ddd;
+    padding: 0.8rem;
+    text-align: center;
+}
+
+.parent-img img,
+.con-c-2 img,
+.con-c-3 img,
+.con-c-4 img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.weight {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.btn {
+    background-color: #99ff00;
+    color: white;
+    border: none;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
+
+.products {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+}
+
+.con-c {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.oil,
+.oil-2,
+.oil-3,
+.oil-4,
+.oil-5 {
+    border: 1px solid #ddd;
+    padding: 0.8rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.oil img,
+.oil-2 img,
+.oil-3 img,
+.oil-4 img,
+.oil-5 img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 0.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 0.5rem 0;
+    }
+
+    .container-a {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .parent-img,
+    .con-c-2,
+    .con-c-3,
+    .con-c-4 .container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .section-title {
+        font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+    }
+
+    .btn {
+        font-size: clamp(0.7rem, 2vw, 0.9rem);
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header img {
+        max-height: 40px;
+    }
+
+    nav a,
+    .container-a a {
+        font-size: clamp(0.7rem, 2vw, 0.9rem);
+        padding: 0.4rem 0.8rem;
+    }
+
+    .parent-img,
+    .con-c-2,
+    .con-c-3,
+    .con-c-4 .container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .oil,
+    .oil-2,
+    .oil-3,
+    .oil-4,
+    .oil-5 {
+        max-width: 150px;
+    }
+
+    .section-title {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+    }
+}
+
+header {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+header nav img {
+    width: 100%;
+    max-width: 100px;
+    margin-left: 13px;
+}
+
+header nav ul {
+    display: flex;
+    gap: 15px;
+    margin-right: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    transition: all ease 1.2s;
+}
+
+/* header nav ul li a:hover {
+    color: #fff;
+    border-radius: 5px;
+    background-color: black;
+    padding: 4px;
+} */
+
+header nav ul li {
+    list-style: none;
+}
+
+/* تنظيم المنتجات في قسم container-cards */
+.container-cards {
+    width: 100%;
+    height: auto;
+    background: whitesmoke;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-cards h2 {
+    font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* تحسين عرض المنتجات باستخدام Grid */
+.parent-img,
+.con-c,
+.con-c-2,
+.con-c-3,
+.con-c-4 .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* تنظيم كل منتج */
+.img,
+.img-0,
+.img-2,
+.img-4,
+ .i-2, 
+.img-3,
+.img-5,
+.img-6,
+.img-7,
+.img99,
+.el,
+.el-2,
+.el-3,
+.el-4,
+.el-5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     border: solid 2px #fff; 
+    border-radius: 12px;
+    background: #fff;
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* تنظيم الصور داخل المنتجات */
+.img img,
+.img-0 img,
+.img-2 img,
+.img-4 img,
+.i-2 img,
+.img-3 img,
+.img-5 img,
+.img-6 img,
+.img-7 img,
+.img99 img,
+.el img,
+.el-2 img,
+.el-3 img,
+.el-4 img,
+.el-5 img {
+    width: 100%;
+    max-width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.img h2,
+.img-0 h2,
+.img-2 h2,
+.img-4 h2,
+.i-2 h2,
+.img-3 h2,
+.img-5 h2,
+.img-6 h2,
+.img-7 h2,
+.img99 h2,
+.el h2,
+.el-2 h2,
+.el-3 h2,
+.el-4 h2,
+.el-5 h2 {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+.weight {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0.5rem 0;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+.img button,
+.img-0 button,
+.img-2 button,
+.img-4 button,
+.i-2 button,
+.img-3 button,
+.img-5 button,
+.img-6 button,
+.img-7 button,
+.img99 button,
+.el button,
+.el-2 button,
+.el-3 button,
+.el-4 button,
+.el-5 button {
+    border-radius: 20px;
+    background: #000;
+    width: 100%;
+    max-width: 120px;
+    height: 30px;
+    padding: 0.3rem;
+    margin-top: 0.5rem;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    border: none;
+}
+
+/* قسم المنتجات الأخرى */
+.products {
+    background: whitesmoke;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+}
+
+.products h2 {
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 1rem;
+}
+
+.con-c {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.products .oil,
+.products .oil-2,
+.products .oil-3,
+.products .oil-4,
+.products .oil-5 {
+    width: 100%;
+    max-width: 180px;
+    background: whitesmoke;
+    border-radius: 12px;
+    transition: all ease 2s;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.products .oil:hover { background: rgb(219, 219, 19); }
+.products .oil-2:hover { background: green; }
+.products .oil-3:hover { background: azure; }
+.products .oil-4:hover { background: brown; }
+.products .oil-5:hover { background: rgb(210, 182, 2); }
+
+.oil img,
+.oil-2 img,
+.oil-3 img,
+.oil-4 img,
+.oil-5 img {
+    width: 100%;
+    max-width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.oil h2,
+.oil-2 h2,
+.oil-3 h2,
+.oil-4 h2,
+.oil-5 h2 {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    margin: 0.5rem 0;
+}
+
+/* تحسين التوافق مع الأجهزة */
+@media screen and (max-width: 768px) {
+    .parent-img,
+    .con-c,
+    .con-c-2,
+    .con-c-3,
+    .con-c-4 .container {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .img,
+    .img-0,
+    .img-2,
+    .img-4,
+    .i-2,
+    .img-3,
+    .img-5,
+    .img-6,
+    .img-7,
+    .img99,
+    .el,
+    .el-2,
+    .el-3,
+    .el-4,
+    .el-5 {
+        max-width: 150px;
+        padding: 0.8rem;
+    }
+
+    .img img,
+    .img-0 img,
+    .img-2 img,
+    .img-4 img,
+    .i-2 img,
+    .img-3 img,
+    .img-5 img,
+    .img-6 img,
+    .img-7 img,
+    .img99 img,
+    .el img,
+    .el-2 img,
+    .el-3 img,
+    .el-4 img,
+    .el-5 img {
+        max-width: 100px;
+        height: 100px;
+    }
+
+    .products .oil,
+    .products .oil-2,
+    .products .oil-3,
+    .products .oil-4,
+    .products .oil-5 {
+        max-width: 150px;
+    }
+
+    .oil img,
+    .oil-2 img,
+    .oil-3 img,
+    .oil-4 img,
+    .oil-5 img {
+        max-width: 100px;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .parent-img,
+    .con-c,
+    .con-c-2,
+    .con-c-3,
+    .con-c-4 .container {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .img,
+    .img-0,
+    .img-2,
+    .img-4,
+    .i-2,
+    .img-3,
+    .img-5,
+    .img-6,
+    .img-7,
+    .img99,
+    .el,
+    .el-2,
+    .el-3,
+    .el-4,
+    .el-5 {
+        max-width: 120px;
+        padding: 0.5rem;
+    }
+
+    .img img,
+    .img-0 img,
+    .img-2 img,
+    .img-4 img,
+    .i-2 img,
+    .img-3 img,
+    .img-5 img,
+    .img-6 img,
+    .img-7 img,
+    .img99 img,
+    .el img,
+    .el-2 img,
+    .el-3 img,
+    .el-4 img,
+    .el-5 img {
+        max-width: 80px;
+        height: 80px;
+    }
+
+    .products .oil,
+    .products .oil-2,
+    .products .oil-3,
+    .products .oil-4,
+    .products .oil-5 {
+        max-width: 120px;
+    }
+
+    .oil img,
+    .oil-2 img,
+    .oil-3 img,
+    .oil-4 img,
+    .oil-5 img {
+        max-width: 80px;
+        height: 80px;
+    }
+
+    .img button,
+    .img-0 button,
+    .img-2 button,
+    .img-4 button,
+    .i-2 button,
+    .img-3 button,
+    .img-5 button,
+    .img-6 button,
+    .img-7 button,
+    .img99 button,
+    .el button,
+    .el-2 button,
+    .el-3 button,
+    .el-4 button,
+    .el-5 button {
+        max-width: 100px;
+        height: 25px;
+        font-size: clamp(0.6rem, 1.8vw, 0.8rem);
+    }
+}
+
+
+body{
+    margin-right: 33px;
+
+
+}
+
+
+.i-2 .img-2{
+    background-color: none;
+    background: none;
+}
+
+section .section-title{
+    width: 102%;
+     height: 45px;
+     color: #ffffff;
+     padding-left: 10px;
+     font-size: 28px;
+     margin: 15px 0;
+}
+section .border{
+    height: 60px;
+    width: 250px;
+    background: linear-gradient(#333,#444,#555,#666,#777);
+    border-radius: 8px;
+margin-left: -88.4rem;
+text-align: left;
+}
+section .border h2{
+    font-size: 32px;
+    text-align: center;
+margin: 7px 15px 5px -6px;
+}
+
+.container-cards{
+          background-color: rgb(236, 236, 236);  
+}
+
+
+
+
+
+
+
+.main-header {
+  background: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 80px;
+  padding: -15px 0 20px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  margin-top: -10px;
+}
+
+ .nav-links li a {
+  color: #f5f5f5;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    flex-direction: column;
+    background: #333;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav-links.active {
+    max-height: 400px;
+  }
+  .nav-links li {
+    padding: 1rem;
+    border-top: 1px solid #ffffff;
+  }
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+.cart{
+    display: flex;
+    gap: 15px;
+     margin-top: -4px; 
+}
+

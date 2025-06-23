@@ -1,0 +1,434 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "poppins" , sans-serif;
+}
+body{
+    background-color: #c9d6ff;
+    background-image:linear-gradient(to right , #e2e2e2 , #c9d6ff) ;
+}
+.container{
+    background: #fff;
+    width: 450px;
+    padding: 1.5rem;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0,0,1,0.9);
+margin-top: 190px;
+}
+#signUp{
+    margin-top: 170px;
+}
+form{
+    margin: 0 2rem;
+}
+.form-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.3rem;
+    margin-bottom: 0.9rem;
+}
+input{
+color: inherit;
+width: 100%;
+background-color: transparent;
+border: none;
+border-bottom: solid 1px #757575;
+padding-left: 1.5rem;
+font-size: 15px;
+}
+.input-group{
+    padding: 1% 0;
+    position: relative;
+    margin-top: 5px;
+}
+.input{
+    margin-top: 18px;
+}
+.h1{
+    font-size: 35px;
+    text-align: center;
+}
+.input-group i{
+    position: absolute;
+    color:#000 ;
+}
+input:focus{
+    background-color: transparent;
+    outline: transparent;
+    border-bottom: solid 2px hsl( 327, 90%,28%);
+}
+input::placeholder{
+    color: transparent;
+}
+label{
+    color: #757575;
+    position: relative;
+    left: 1.2em;
+    top: -1.3em;
+    cursor: auto;
+    transition: all ease 0.3s;
+}
+input:focus~label,input:not(:placeholder-shown)~label{
+top: -3em;
+color: hsl( 327, 90%,28%);
+font-size: 15px;
+}
+.recover{
+text-align: right;
+font-size: 1rem;
+margin-bottom: 1rem;
+}
+.recover a{
+text-decoration: none;
+color: rgb(125,125,235);
+}
+.container a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+.btn{
+font-size: 1.1rem;
+padding: 8px 0;
+border-radius: 5px;
+outline: none;
+border: none;
+width: 100%;
+background: rgb(125,125,235);
+color: white;
+cursor: pointer;
+transition: all ease 0.9s;
+}
+.btn:hover{
+    color: #0ae40a;
+    text-decoration: none;
+}
+.or{
+font-size: 1.1rem;
+margin-top: 0.5rem;
+text-align: center;
+}
+.icons{
+    text-align: center;
+}
+.icons i{
+color: rgb(125,125,235);
+padding: 0.8rem 1.5rem;
+border-radius: 10px;
+font-size: 1.5rem;
+cursor: pointer;
+border: solid 2px #dfe9f5;
+margin: 0 15px;
+transition: all ease 1s;
+}
+.icons i:hover{
+    background: #07001f;
+    font-size: 1.6rem;
+    border: solid 2px rgb(125,125,235);
+}
+.links{
+    display: flex;
+    justify-content: center;
+    padding: 0 4rem;
+    margin-top: 0.9rem;
+    font-weight: bold;
+}
+button{
+    color: rgb(125,125,235);
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+}
+button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "poppins" , sans-serif;
+}
+body{
+    background-color: #c9d6ff;
+    background-image:linear-gradient(to right , #e2e2e2 , #c9d6ff) ;
+}
+.container{
+    background: #fff;
+    width: 450px;
+    padding: 1.5rem;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0,0,1,0.9);
+    margin-top: 190px;
+}
+#signUp{
+    margin-top: 170px;
+}
+form{
+    margin: 0 2rem;
+}
+.form-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.3rem;
+    margin-bottom: 0.9rem;
+}
+input{
+color: inherit;
+width: 100%;
+background-color: transparent;
+border: none;
+border-bottom: solid 1px #757575;
+padding-left: 1.5rem;
+font-size: 15px;
+}
+.input-group{
+    padding: 1% 0;
+    position: relative;
+    margin-top: 5px;
+}
+.input{
+    margin-top: 18px;
+}
+.h1{
+    font-size: 35px;
+    text-align: center;
+}
+.input-group i{
+    position: absolute;
+    color:#000 ;
+}
+input:focus{
+    background-color: transparent;
+    outline: transparent;
+    border-bottom: solid 2px hsl( 327, 90%,28%);
+}
+input::placeholder{
+    color: transparent;
+}
+label{
+    color: #757575;
+    position: relative;
+    left: 1.2em;
+    top: -1.3em;
+    cursor: auto;
+    transition: all ease 0.3s;
+}
+input:focus~label,input:not(:placeholder-shown)~label{
+top: -3em;
+color: hsl( 327, 90%,28%);
+font-size: 15px;
+}
+.recover{
+text-align: right;
+font-size: 1rem;
+margin-bottom: 1rem;
+}
+.recover a{
+text-decoration: none;
+color: rgb(125,125,235);
+}
+.container a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+.btn{
+font-size: 1.1rem;
+padding: 8px 0;
+border-radius: 5px;
+outline: none;
+border: none;
+width: 100%;
+background: rgb(125,125,235);
+color: white;
+cursor: pointer;
+transition: all ease 0.9s;
+}
+.btn:hover{
+    color: #0ae40a;
+    text-decoration: none;
+}
+.or{
+font-size: 1.1rem;
+margin-top: 0.5rem;
+text-align: center;
+}
+.icons{
+    text-align: center;
+}
+.icons i{
+color: rgb(125,125,235);
+padding: 0.8rem 1.5rem;
+border-radius: 10px;
+font-size: 1.5rem;
+cursor: pointer;
+border: solid 2px #dfe9f5;
+margin: 0 15px;
+transition: all ease 1s;
+}
+.icons i:hover{
+    background: #07001f;
+    font-size: 1.6rem;
+    border: solid 2px rgb(125,125,235);
+}
+.links{
+    display: flex;
+    justify-content: center;
+    padding: 0 4rem;
+    margin-top: 0.9rem;
+    font-weight: bold;
+}
+button{
+    color: rgb(125,125,235);
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+}
+button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* تعديلات التجاوب */
+
+/* للشاشات الصغيرة (أقل من 600 بكسل) */
+@media (max-width: 599px) {
+    .container {
+        width: 90%; /* جعل الحاوية تأخذ 90% من عرض الشاشة */
+        margin-top: 30px; /* تقليل الهامش العلوي */
+        margin-bottom: 30px; /* إضافة هامش سفلي */
+    }
+
+    #signUp {
+        margin-top: 30px; /* تقليل الهامش العلوي لنموذج التسجيل */
+    }
+
+    .form-title {
+        font-size: 1.3rem; /* تقليل حجم عنوان النموذج */
+        padding: 1rem;
+        margin-bottom: 0.7rem;
+    }
+
+    input {
+        font-size: 14px; /* تقليل حجم خط الإدخال */
+        padding-left: 1rem;
+    }
+
+    label {
+        font-size: 14px; /* تقليل حجم خط التسمية */
+        left: 0.8rem;
+        top: -1.1rem;
+    }
+
+    input:focus~label, input:not(:placeholder-shown)~label {
+        top: -2.5em;
+        font-size: 14px;
+    }
+
+    .h1 {
+        font-size: 2.5rem; /* تقليل حجم العنوان الرئيسي */
+    }
+
+    .recover {
+        font-size: 0.9rem; /* تقليل حجم خط رابط استعادة كلمة المرور */
+        margin-bottom: 0.8rem;
+    }
+
+    .btn {
+        font-size: 1rem; /* تقليل حجم خط الزر */
+        padding: 6px 0;
+    }
+
+    .or {
+        font-size: 1rem; /* تقليل حجم خط "or" */
+        margin-top: 0.3rem;
+    }
+
+    .icons i {
+        font-size: 1.3rem; /* تقليل حجم أيقونات التواصل الاجتماعي */
+        padding: 0.6rem 1.2rem;
+        margin: 0 10px;
+    }
+
+    .links {
+        padding: 0 2rem; /* تقليل حشو الروابط */
+        margin-top: 0.7rem;
+        font-size: 0.9rem; /* تقليل حجم خط الروابط */
+    }
+
+    button {
+        font-size: 0.9rem; /* تقليل حجم خط أزرار الروابط */
+    }
+}
+
+/* للشاشات المتوسطة (من 600 بكسل إلى 768 بكسل) */
+@media (min-width: 600px) and (max-width: 768px) {
+    .container {
+        width: 70%; /* جعل الحاوية تأخذ 70% من عرض الشاشة */
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    #signUp {
+        margin-top: 60px;
+    }
+
+    .form-title {
+        font-size: 1.4rem;
+    }
+
+    input {
+        font-size: 15px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input:focus~label, input:not(:placeholder-shown)~label {
+        font-size: 14px;
+    }
+
+    .h1 {
+        font-size: 30px;
+    }
+
+    .recover {
+        font-size: 0.95rem;
+    }
+
+    .btn {
+        font-size: 1.05rem;
+    }
+
+    .or {
+        font-size: 1.05rem;
+    }
+
+    .icons i {
+        font-size: 1.4rem;
+        padding: 0.7rem 1.3rem;
+        margin: 0 12px;
+    }
+
+    .links {
+        font-size: 0.95rem;
+    }
+
+    button {
+        font-size: 0.95rem;
+    }
+}
+
+

@@ -1,0 +1,84 @@
+/* Simplified static/style.css */
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    direction: rtl; /* For Right-to-Left languages like Arabic */
+    text-align: right;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: right;
+}
+
+button {
+    padding: 8px 12px;
+    margin-right: 5px; /* Space between buttons */
+    cursor: pointer;
+}
+
+#managerModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#managerModal h2 {
+    text-align: center;
+}
+
+#managerModal form {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more responsive */
+    max-width: 500px;
+}
+
+#managerModal form div {
+    margin-bottom: 15px;
+}
+
+#managerModal form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#managerModal form input[type="text"],
+#managerModal form input[type="password"] {
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#permissionsList div {
+    margin-bottom: 5px;
+}
+
+#permissionsList input[type="checkbox"] {
+    margin-left: 5px; /* Space between checkbox and label */
+}
