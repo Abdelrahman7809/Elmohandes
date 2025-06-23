@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Elmohandes</title>
+    <link rel="stylesheet" href="css/sing.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="img/favicon-32x32.png" />
+    <link rel="stylesheet" href="sing.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</head>
+<body>
+
+<div class="container" id="signUp" style="display: none;">
+    <h1 class="form-titel h1">Register</h1>
+    <form id="signUpForm" method="post" action="javascript:void(0);">
+        <div class="input-group input">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" name="fName" id="fName" placeholder="First Name" required />
+            <label for="fname">First Name</label>
+        </div>
+        <div class="input-group">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" name="lName" id="lName" placeholder="Last Name" required />
+            <label for="lname">Last Name</label>
+        </div>
+
+        <div class="input-group">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" name="email" id="signUpEmail" placeholder="Email" required />
+            <label for="email">Email</label>
+        </div>
+        <div class="input-group">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" name="password" id="signUpPassword" placeholder="password" required />
+            <label for="password">Password</label>
+        </div>
+        <button type="button" class="btn" id="registerBtn">Sign Up</button>
+    </form>
+
+    <p class="or">----------or----------</p>
+    <div class="icons">
+        <i class="fa-brands fa-google google-sign-in"></i>
+        <i class="fa-brands fa-facebook facebook-sign-in"></i>
+    </div>
+
+    <div class="links">
+        <p>Already have an account?</p>
+        <button id="signInButton">Sign In</button>
+    </div>
+</div>
+
+<div class="container" id="signIn">
+    <h1 class="form-titel h1">Sign In</h1>
+    <form id="signInForm" method="post" action="javascript:void(0);">
+        <div class="input-group input">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" name="email" id="signInEmail" placeholder="Email" required />
+            <label for="email">Email</label>
+        </div>
+        <div class="input-group">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" name="password" id="signInPassword" placeholder="password" required />
+            <label for="password">Password</label>
+        </div>
+        <p class="recover"><a href="recover.html">Recover Password</a></p>
+        <button type="button" class="btn" id="loginBtn">Sign In</button>
+    </form>
+
+    <p class="or">----------or----------</p>
+    <div class="icons">
+        <i class="fa-brands fa-google google-sign-in"></i>
+        <i class="fa-brands fa-facebook facebook-sign-in"></i>
+    </div>
+
+    <div class="links">
+        <p>Don't have an account yet?</p>
+        <button id="signUpButton">Sign Up</button>
+    </div>
+</div>
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCNEZ3Blt4ck-X5bzH3Y0q1Qj9TTY4B14Q",
+        authDomain: "elmohandes-838e2.firebaseapp.com",
+        projectId: "elmohandes-838e2",
+        storageBucket: "elmohandes-838e2.firebasestorage.app",
+        messagingSenderId: "394716402594",
+        appId: "1:394716402594:web:840ac501b9d0c9130cd8fb",
+        measurementId: "G-5Z0VQ3E7XR"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const googleProvider = new GoogleAuthProvider();
+
+    // Google Sign In
+    document.querySelectorAll('.google-sign-in').forEach(el => {
+        el.addEventListener('click', () => {
+            signInWithPopup(auth, googleProvider)
+                .then(result => {
+                    Swal.fire("تم تسجيل الدخول", "مرحبًا " + result.user.email, "success").then(() => {
+                        console.log("✅ تسجيل دخول Google تم، تحويل المستخدم إلى home.html");
+                        window.location.href = "home.html";
+                    });
+                })
+                .catch(error => {
+                    console.error("❌ Google Login Error:", error.message);
+                    Swal.fire("خطأ في تسجيل الدخول عبر جوجل", error.message, "error");
+                });
+        });
+    });
+
+    document.querySelectorAll('.facebook-sign-in').forEach(el => {
+        el.addEventListener('click', () => {
+            Swal.fire("غير مفعّل", "ميزة فيسبوك لم تُفعّل بعد", "info");
+        });
+    });
+
+    // Sign Up
+    document.getElementById("registerBtn").addEventListener("click", () => {
+        const email = document.getElementById("signUpEmail").value;
+        const password = document.getElementById("signUpPassword").value;
+        const fName = document.getElementById("fName").value;
+        const lName = document.getElementById("lName").value;
+        // تم إزالة الحصول على قيمة رقم الهاتف هنا
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(userCredential => {
+                const user = userCredential.user;
+                return updateProfile(user, { displayName: `${fName} ${lName}` });
+            })
+            .then(() => {
+                return sendEmailVerification(auth.currentUser);
+            })
+            .then(() => {
+                // تم تعديل رسالة SweetAlert وإعادة التوجيه إلى صفحة profile.html
+                Swal.fire("تم إنشاء الحساب", "✅ تم إنشاء حسابك بنجاح. سيتم نقلك إلى صفحة الملف الشخصي.", "success").then(() => {
+                     window.location.href = "profile.html"; // إعادة التوجيه إلى صفحة الملف الشخصي
+                });
+            })
+            .catch(error => {
+                Swal.fire("خطأ في إنشاء الحساب", error.message, "error");
+            });
+    });
+
+    // Sign In
+    document.getElementById("loginBtn").addEventListener("click", () => {
+        const email = document.getElementById("signInEmail").value;
+        const password = document.getElementById("signInPassword").value;
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then(userCredential => {
+                const user = userCredential.user;
+                if (!user.emailVerified) {
+                    Swal.fire("الحساب غير مفعل", "يرجى تفعيل بريدك الإلكتروني أولاً.", "warning");
+                    return;
+                }
+                Swal.fire("تم تسجيل الدخول", "مرحبا" + (user.displayName || user.email), "success").then(() => {
+                    window.location.href = "home.html";
+                });
+            })
+            .catch(error => {
+                Swal.fire("خطأ في تسجيل الدخول", error.message, "error");
+            });
+    });
+
+    // Toggle views
+    document.getElementById("signInButton").addEventListener("click", () => {
+        document.getElementById("signUp").style.display = "none";
+        document.getElementById("signIn").style.display = "block";
+    });
+
+    document.getElementById("signUpButton").addEventListener("click", () => {
+        document.getElementById("signIn").style.display = "none";
+        document.getElementById("signUp").style.display = "block";
+    });
+
+    // تم إزالة تهيئة حقل رقم الهاتف من هنا لأننا أزلناه من نموذج التسجيل
+    // const phoneInputField = document.querySelector("#phone");
+    // const phoneInput = window.intlTelInput(phoneInputField, {
+    //     initialCountry: "auto",
+    //     geoIpLookup: function (callback) {
+    //         fetch('https://ipinfo.io/json?token=YOUR_TOKEN')
+    //             .then(resp => resp.json())
+    //             .then(resp => callback(resp.country));
+    //     },
+    //     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    // });
+
+</script>
+
+
+</body>
+</html>

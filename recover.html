@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recover Password</title>
+  <link rel="stylesheet" href="css/sing.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+  <div class="container" id="recoverPassword">
+    <h1 class="form-titel h1">Recover Password</h1>
+    <form method="post" action="javascript:void(0);">
+      <div class="input-group input">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" id="recoveryEmail" placeholder="Enter your email" required />
+        <label for="recoveryEmail">Email</label>
+      </div>
+      <button type="button" class="btn" id="recoverBtn">Send Recovery Link</button>
+    </form>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDe6oVfkbNUHuPDL1ANq_HLVEHh4skz7Zc",
+      authDomain: "login-94455.firebaseapp.com",
+      projectId: "login-94455",
+      storageBucket: "login-94455.appspot.com",
+      messagingSenderId: "132525539202",
+      appId: "1:132525539202:web:b490f6c4c156398480d99b",
+      measurementId: "G-087D0K7000"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById("recoverBtn").addEventListener("click", () => {
+      const email = document.getElementById("recoveryEmail").value;
+
+      if (!email) {
+        Swal.fire("تنبيه", "يرجى إدخال البريد الإلكتروني", "warning");
+        return;
+      }
+
+      auth.sendPasswordResetEmail(email)
+        .then(() => {
+          Swal.fire("تم الإرسال", "📩 تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك.", "success");
+        })
+        .catch(error => {
+          Swal.fire("خطأ", error.message, "error");
+        });
+    });
+  </script>
+</body>
+</html>

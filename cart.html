@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>سلة التسوق</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .fa-minus {
+            color: red;
+            font-size: 14px;
+            border: none;
+            background: none;
+        }
+
+        .fa-plus {
+            color: green;
+            font-size: 15px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #cecece;
+        }
+
+        .btns {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background-color: #2e2e2e;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .confirm-btn {
+            background-color: green;
+        }
+
+        .delete-btn {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .quantity-btn {
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        #clearCartBtn {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>🛒 سلة التسوق</h2>
+    <div id="cartContainer"></div>
+
+    <div class="btns">
+        <button id="confirmOrderBtn" class="action-btn confirm-btn">✅ تأكيد الطلب</button>
+        <button id="clearCartBtn" class="action-btn" style="background-color: #b30000;">🗑️ تفريغ السلة</button>
+        <a href="home.html" class="action-btn">🏠 الرجوع للمتجر</a>
+        <a href="my_orders.html" class="action-btn">📄 مشاهدة طلباتي</a>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function updateCart() {
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+        }
+
+        function increaseQuantity(index) {
+            cart[index].quantity += 1;
+            updateCart();
+        }
+
+        function decreaseQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+            } else {
+                cart.splice(index, 1); // حذف المنتج إذا الكمية أصبحت 0
+            }
+            updateCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function clearCart() {
+            Swal.fire({
+                title: 'هل أنت متأكد؟',
+                text: "سيتم حذف جميع المنتجات من السلة.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'نعم، حذف!',
+                cancelButtonText: 'لا، إلغاء!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    cart = [];
+                    updateCart();
+                    Swal.fire('تم الحذف!', 'تم تفريغ السلة بنجاح.', 'success');
+                }
+            });
+        }
+
+        function renderCart() {
+            try {
+                if (cart.length === 0) {
+                    document.getElementById("cartContainer").innerHTML = "<p>السلة فارغة حاليًا</p>";
+                    return;
+                }
+
+                let total = 0;
+                let table =
+                    '<table><thead><tr><th>المنتج</th><th>السعر</th><th>الكمية</th><th>الإجمالي</th><th>حذف</th></tr></thead><tbody>';
+
+                cart.forEach((item, index) => {
+                    const subtotal = item.price * item.quantity;
+                    total += subtotal;
+                    table += `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.price.toFixed(2)} LE</td>
+                            <td>
+                                <button class="quantity-btn" onclick="decreaseQuantity(${index})"><i class="fa-solid fa-minus"></i></button>
+                                ${item.quantity}
+                                <button class="quantity-btn" onclick="increaseQuantity(${index})"><i class="fa-solid fa-plus"></i></button>
+                            </td>
+                            <td>${subtotal.toFixed(2)} LE</td>
+                            <td><button class="delete-btn" onclick="removeItem(${index})">حذف</button></td>
+                        </tr>
+                    `;
+                });
+
+                table += `</tbody></table><h3>الإجمالي = ${total.toFixed(2)} LE</h3>`;
+                document.getElementById("cartContainer").innerHTML = table;
+            } catch (error) {
+                console.error("Error rendering cart:", error);
+                document.getElementById("cartContainer").innerHTML =
+                    "<p>حدث خطأ أثناء عرض السلة. يرجى المحاولة لاحقًا.</p>";
+            }
+        }
+
+        async function confirmOrder() {
+            try {
+                const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                if (currentCart.length === 0) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'السلة فارغة',
+                        text: 'يرجى إضافة منتجات قبل تأكيد الطلب',
+                        confirmButtonText: 'حسنًا'
+                    });
+                    return;
+                }
+
+                const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+                const newOrder = {
+                    id: Date.now(),
+                    date: new Date().toLocaleString("ar-EG"),
+                    items: currentCart
+                };
+
+                orders.push(newOrder);
+                localStorage.setItem("orders", JSON.stringify(orders));
+                localStorage.removeItem("cart");
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'تم تأكيد الطلب',
+                    html: `✅ تم حفظ طلبك<br>رقم الطلب: <strong>${newOrder.id}</strong><br>يمكنك مشاهدة تفاصيله من صفحة طلباتي`,
+                    confirmButtonText: 'موافق',
+                    confirmButtonColor: '#7b4fff'
+                }).then(() => {
+                    cart.length = 0;
+                    renderCart();
+                });
+
+            } catch (error) {
+                console.error("Error confirming order:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'خطأ',
+                    text: 'حدث خطأ أثناء تأكيد الطلب. يرجى المحاولة مرة أخرى.',
+                });
+            }
+        }
+
+        document.getElementById("confirmOrderBtn").addEventListener("click", confirmOrder);
+        document.getElementById("clearCartBtn").addEventListener("click", clearCart);
+
+        renderCart();
+    </script>
+</body>
+</html>

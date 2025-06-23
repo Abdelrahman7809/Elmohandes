@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي - التحقق من رقم الهاتف</title> <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #4a148c;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #757575;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .form-control {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            text-align: right;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #9c27b0;
+            box-shadow: 0 0 5px rgba(156, 39, 176, 0.3);
+        }
+
+        .btn-primary {
+            background-color: #9c27b0;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: #7b1fa2;
+        }
+
+        .text-center {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .text-center a {
+            color: #9c27b0;
+            text-decoration: none;
+        }
+
+        .text-center a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        /* Style for the verification code page */
+        #verificationCodeForm {
+            display: none;
+        }
+
+        .code-input-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .code-input {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-family: 'Cairo', sans-serif;
+            padding: 0;
+            text-align: center;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: #9c27b0;
+            box-shadow: 0 0 5px rgba(156, 39, 176, 0.3);
+        }
+
+        #resendCode {
+            margin-top: 20px;
+            color: #9c27b0;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        #resendCode:hover {
+            text-decoration: underline;
+        }
+
+        #resendTimer {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="addPhoneForm">
+        <h2>أدخل رقم الهاتف للتحقق</h2> <form id="phoneForm">
+            <div class="form-group">
+                <label for="phone">رقم الهاتف</label>
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="أدخل رقم الهاتف" required>
+                <div id="phoneError" class="error-message"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">إرسال رمز التحقق</button> </form>
+
+        <div class="text-center">
+             <p>هل أكملت التحقق وتريد تسجيل الدخول؟ <a href="login.html">انتقل إلى تسجيل الدخول</a></p>
+        </div>
+    </div>
+
+    <div class="container" id="verificationCodeForm">
+        <h2>أدخل رمز التحقق</h2> <form id="verifyForm">
+            <div class="form-group">
+                <label for="code">رمز التحقق</label>
+                <div class="code-input-container">
+                    <input type="text" id="code1" name="code" class="code-input" maxlength="1" required>
+                    <input type="text" id="code2" name="code" class="code-input" maxlength="1" required>
+                    <input type="text" id="code3" name="code" class="code-input" maxlength="1" required>
+                    <input type="text" id="code4" name="code" class="code-input" maxlength="1" required>
+                </div>
+                <div id="codeError" class="error-message"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">تأكيد الرمز</button>
+            <a href="#" id="resendCode">إعادة إرسال الرمز</a>
+            <div id="resendTimer"></div>
+        </form>
+         <div class="text-center">
+             <p>هل أكملت التحقق وتريد تسجيل الدخول؟ <a href="login.html">انتقل إلى تسجيل الدخول</a></p>
+        </div>
+    </div>
+
+
+    <script>
+        const phoneForm = document.getElementById('phoneForm');
+        const verificationCodeForm = document.getElementById('verificationCodeForm');
+        const phoneInput = document.getElementById('phone');
+        const phoneError = document.getElementById('phoneError');
+        const codeInputs = document.querySelectorAll('.code-input');
+        const codeError = document.getElementById('codeError');
+        const resendCodeLink = document.getElementById('resendCode');
+        const resendTimerDisplay = document.getElementById('resendTimer');
+
+        let userPhoneNumber = ''; // Store phone number
+        let generatedCode = ''; // Variable to store the generated code
+        let resendAttempts = 0;
+        const maxResendAttempts = 3;
+        let resendTimer;
+        let resendTimerSeconds = 60;
+
+        // Function to simulate checking if the phone number is confirmed (for demonstration)
+        // In a real application, this would involve backend communication
+        function isPhoneConfirmed(phoneNumber) {
+            const confirmedPhone = localStorage.getItem('confirmedPhone');
+            return confirmedPhone === phoneNumber;
+        }
+
+        // Function to save confirmed phone number (for demonstration)
+        function saveConfirmedNumber(phoneNumber) {
+            localStorage.setItem('confirmedPhone', phoneNumber);
+        }
+
+         // Function to generate a random 4-digit verification code
+        function generateVerificationCode() {
+            let code = '';
+            for (let i = 0; i < 4; i++) {
+                code += Math.floor(Math.random() * 10);
+            }
+            return code;
+        }
+
+        // Function to start the resend timer
+        function startResendTimer() {
+            resendCodeLink.style.display = 'none';
+            resendTimerDisplay.textContent = `إعادة الإرسال بعد ${resendTimerSeconds} ثانية`;
+            resendTimer = setInterval(() => {
+                resendTimerSeconds--;
+                if (resendTimerSeconds <= 0) {
+                    clearInterval(resendTimer);
+                    resendCodeLink.style.display = 'block';
+                    resendTimerDisplay.textContent = '';
+                    resendTimerSeconds = 60; // Reset timer
+                } else {
+                    resendTimerDisplay.textContent = `إعادة الإرسال بعد ${resendTimerSeconds} ثانية`;
+                }
+            }, 1000);
+        }
+
+
+        // Validate phone number input
+        function validatePhone() {
+            phoneError.textContent = '';
+            if (!phoneInput.value.trim()) {
+                phoneError.textContent = 'رقم الهاتف مطلوب';
+                return false;
+            }
+             // يمكنك تعديل هذا التعبير النمطي للتحقق من صيغة رقم الهاتف المطلوبة
+            else if (!/^\d{10,}$/.test(phoneInput.value)) { // مثال: 10 أرقام على الأقل
+                phoneError.textContent = 'يرجى إدخال رقم هاتف صحيح (10 أرقام على الأقل)';
+                return false;
+            }
+            return true;
+        }
+
+        // Handle phone form submission
+        phoneForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (validatePhone()) {
+                userPhoneNumber = phoneInput.value;
+
+                // في تطبيق حقيقي، هنا سترسل رقم الهاتف إلى الواجهة الخلفية لإنشاء وإرسال رمز التحقق
+                // كمثال، سنقوم بتوليد رمز عشوائي هنا
+                generatedCode = generateVerificationCode();
+                console.log("Generated verification code:", generatedCode); // لعرض الرمز في الكونسول للتجربة
+
+                Swal.fire({
+                    title: "تم إرسال الرمز",
+                    text: `تم إرسال رمز التحقق إلى رقم هاتفك المدخل. (الرمز التجريبي: ${generatedCode})`,
+                    icon: "success",
+                    confirmButtonText: "متابعة",
+                }).then(() => {
+                    document.getElementById('addPhoneForm').style.display = 'none';
+                    verificationCodeForm.style.display = 'block';
+                    codeInputs[0].focus(); // Focus on the first code input
+                    startResendTimer(); // Start the resend timer
+                });
+            }
+        });
+
+        // Auto-focus and handle Backspace for code inputs
+        codeInputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                if (input.value.length === 1) {
+                    if (index < codeInputs.length - 1) {
+                        codeInputs[index + 1].focus();
+                    }
+                }
+            });
+
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Backspace' && input.value.length === 0) {
+                    if (index > 0) {
+                        codeInputs[index - 1].focus();
+                    }
+                }
+            });
+        });
+
+        // Validate verification code input
+        function validateCode() {
+            codeError.textContent = '';
+            let enteredCode = '';
+            codeInputs.forEach(input => {
+                enteredCode += input.value;
+            });
+            if (enteredCode.length !== codeInputs.length) {
+                codeError.textContent = 'يرجى إدخال رمز التحقق كاملًا';
+                return false;
+            }
+            // في تطبيق حقيقي، هنا سترسل الرمز المدخل ورقم الهاتف للواجهة الخلفية للتحقق من صحة الرمز
+            else if (enteredCode !== generatedCode) { // مقارنة بالرمز التجريبي المولّد
+                codeError.textContent = 'رمز التحقق غير صحيح';
+                return false;
+            }
+            return true;
+        }
+
+        // Handle verification form submission
+        verificationCodeForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (validateCode()) {
+                // في تطبيق حقيقي، بعد التحقق الناجح من الواجهة الخلفية
+                saveConfirmedNumber(userPhoneNumber); // حفظ رقم الهاتف كـ "مؤكد" (للتجربة)
+
+                Swal.fire({
+                    title: "تم التحقق",
+                    text: "تم التحقق من رقم هاتفك بنجاح.",
+                    icon: "success",
+                    confirmButtonText: "متابعة إلى تسجيل الدخول", // توجيه المستخدم لتسجيل الدخول
+                }).then(() => {
+                     // بعد تأكيد رقم الهاتف، يمكن إعادة التوجيه إلى صفحة تسجيل الدخول
+                     window.location.href = "login.html";
+                });
+            }
+        });
+
+        // Handle resend code link click
+        resendCodeLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (resendAttempts < maxResendAttempts) {
+                // في تطبيق حقيقي، هنا سترسل طلبًا جديدًا إلى الواجهة الخلفية لإعادة إرسال الرمز
+                 generatedCode = generateVerificationCode(); // توليد رمز جديد (للتجربة)
+                 console.log("New generated code:", generatedCode);
+
+                Swal.fire({
+                    title: "تم الإرسال",
+                    text: "تم إرسال رمز تحقق جديد إلى رقم هاتفك المدخل.",
+                    icon: "success",
+                    confirmButtonText: "موافق",
+                }).then(() => {
+                    // Clear the code inputs
+                    codeInputs.forEach(input => {
+                        input.value = '';
+                    });
+                    codeInputs[0].focus(); // Focus on the first input
+                    clearInterval(resendTimer); // Clear any existing timer
+                    resendTimerSeconds = 60; // Reset timer seconds
+                    startResendTimer(); // Start the timer again
+                    resendAttempts++;
+                });
+            } else {
+                Swal.fire({
+                    title: "محاولات كثيرة",
+                    text: "لقد تجاوزت الحد الأقصى لمحاولات إعادة إرسال الرمز. يرجى المحاولة لاحقًا.",
+                    icon: "warning",
+                    confirmButtonText: "موافق",
+                });
+                resendCodeLink.style.display = 'none'; // Hide the resend link
+            }
+        });
+
+         // Check if phone is already confirmed on page load and potentially redirect
+         window.onload = function () {
+            const savedConfirmedPhone = localStorage.getItem('confirmedPhone');
+            const savedEnteredPhone = localStorage.getItem('userPhone'); // يمكنك حفظ الرقم المدخل مؤقتًا أيضًا
+
+            if (savedConfirmedPhone) {
+                 Swal.fire({
+                    title: "رقم الهاتف مؤكد",
+                    text: "رقم هاتفك مؤكد بالفعل. يمكنك تسجيل الدخول الآن.",
+                    icon: "info",
+                    confirmButtonText: "الانتقال إلى تسجيل الدخول",
+                }).then(() => {
+                     window.location.href = "login.html";
+                });
+            } else if (savedEnteredPhone) {
+                // إذا كان هناك رقم مدخل لكن غير مؤكد، يمكنك عرضه في الحقل
+                phoneInput.value = savedEnteredPhone;
+            }
+             // التركيز على حقل رقم الهاتف عند تحميل الصفحة إذا لم يتم التحقق
+             if (!savedConfirmedPhone) {
+                  phoneInput.focus();
+             }
+        };
+
+        // Optionally, save the entered phone number to local storage as the user types
+        phoneInput.addEventListener('input', () => {
+            localStorage.setItem('userPhone', phoneInput.value);
+        });
+
+
+    </script>
+</body>
+
+</html>

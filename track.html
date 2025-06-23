@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تتبع الطلب</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="style.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 50px;
+    }
+    h2 {
+      color: #333;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #444;
+    }
+
+
+
+
+
+
+
+
+
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 30px 15px;
+  margin: 0;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  font-size: 16px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  margin-top: 15px;
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 30px;
+  font-size: 16px;
+  text-align: right;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 20px;
+  }
+
+  input, button {
+    font-size: 15px;
+    width: 100%;
+  }
+
+  #result {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <h2>📦 تتبع الطلب</h2>
+  <p>أدخل رقم الطلب لمعرفة حالته:</p>
+  <input type="number" id="orderIdInput" placeholder="رقم الطلب">
+  <br>
+  <button onclick="trackOrder()">🔍 تتبع</button>
+
+  <div id="result"></div>
+
+  <script>
+    function trackOrder() {
+      const orderId = document.getElementById("orderIdInput").value.trim();
+  
+      if (!orderId) {
+        Swal.fire("يرجى إدخال رقم الطلب");
+        return;
+      }
+  
+      const orders = JSON.parse(localStorage.getItem("orders")) || [];
+      const order = orders.find(o => o.id == orderId);
+  
+      if (!order) {
+        Swal.fire("لم يتم العثور على الطلب", "تأكد من رقم الطلب وأعد المحاولة", "error");
+        return;
+      }
+  
+      let resultHTML = `<h3>📦 تفاصيل الطلب رقم ${order.id}</h3>`;
+      resultHTML += `<p><strong>📅 التاريخ:</strong> ${order.date}</p><hr>`;
+  
+      order.items.forEach(item => {
+        resultHTML += `
+          <p><strong>المنتج:</strong> ${item.name}</p>
+          <p><strong>الكمية:</strong> ${item.quantity}</p>
+          <p><strong>السعر:</strong> ${item.price} LE</p>
+          <hr>
+        `;
+      });
+  
+      document.getElementById("result").innerHTML = resultHTML;
+    }
+  </script>
+  
+</body>
+</html>

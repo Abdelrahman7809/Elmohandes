@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elmohandes</title>
+
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="icon" href="img/bacgrounds/favicon-32x32.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+
+<header class="main-header">
+  <nav class="navbar">
+    <!-- <div class="logo">Elmohandes</div> -->
+    <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="home.html">Store</a></li>
+      <li><a href="#">Testimonial</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Call</a></li>
+      <li><span id="userNameDisplay" style="display:none;font-weight:bold;"></span></li>
+    </ul>
+    <div class="cart">
+                  <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+      <a href="login.html" id="signInButtonHome">Sign in <i class="fa-solid fa-right-to-bracket"></i></a>
+    </div>
+  </nav>
+
+</header>
+
+
+
+</div>
+
+<section class="container-cards">
+    <div class="container my-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <input type="text" id="searchInput" class="form-control" placeholder="🔍 ابحث عن منتج..." oninput="filterProducts()" style="border-radius:20px ; margin-top: 80px;">
+            </div>
+        </div>
+    </div>
+
+    <div class="border">
+    <h2 class="section-title">Arma Products</h2>
+    </div>
+    <div class="parent-img">
+        <div class="img-0 product-card">
+            <img src="img/oil/crestal-corn-oil-1l.jpg" alt="crestal">
+            <h2>crestal</h2>
+            <div class="weight">
+                <p>100LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn" class="btn">add to cart</button>
+        </div>
+        <div class="img-4 product-card">
+            <img src="img/sam/sam 2.avif" alt="hanem">
+            <h2>hanem</h2>
+            <div class="weight">
+                <p>125LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="img-4 product-card">
+            <img src="img/sam/sam 44.png" alt="rawabe">
+            <h2>rawabe</h2>
+            <div class="weight">
+                <p>120LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="img-5 product-card">
+            <img src="img/oil/oile -22.jpg" alt="crestail oil">
+            <h2>creatal oil</h2>
+            <div class="weight">
+                <p>70LE</p>
+                <p>1L</p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+
+        <div class="img-5 product-card">
+            <img src="img/oil/asil-oil-1.7l.jpg" alt="crestail oil">
+            <h2>creatal oil</h2>
+            <div class="weight">
+                <p>150LE</p>
+                <p>1L</p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+    </div>
+
+    <div class="border">
+    <h2 class="section-title">Savola Group</h2>
+    </div>
+    <div class="con-c-2">
+        <div class="img99 product-card">
+            <img src="img/sam/tawabi-sam-1k.jpg" alt="gana">
+            <h2>gana</h2>
+            <div class="weight">
+                <p>90LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="img-3 product-card">
+            <img src="img/sam/sam 3.png" alt="gana">
+            <h2>gana</h2>
+            <div class="weight">
+                <p>80LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="img-6 product-card">
+            <img src="img/sam/snapedit_1744203381256.png" alt="gana beater">
+            <h2>gana beater</h2>
+            <div class="weight">
+                <p>130LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="img-7 product-card">
+            <img src="img/oil/snapedit_1744131588294.png" alt="afiea oil">
+            <h2>afiea oil</h2>
+            <div class="weight">
+                <p>120LE</p>
+                <p>1.5L</p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="img-7 product-card">
+            <img src="img/oil/asieal-corn-oil-1l.jpg" alt="gana beater">
+            <h2>asil oil</h2>
+            <div class="weight">
+                <p>130LE</p>
+                <p>2.2L</p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+    </div>
+
+    <div class="border">
+    <h2 class="section-title">Elmohandes</h2>
+    </div>
+    <div class="con-c-3">
+        <div class="el product-card">
+            <img src="img/honey/snapedit_1744179734273.png" alt="Black honey">
+            <h2>black honey</h2>
+            <div class="weight">
+                <p>40LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="el-2 product-card">
+            <img src="img/honey/brown honey end.png" alt="Glucose Honey">
+            <h2>glucose</h2>
+            <div class="weight">
+                <p>35LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="el-3 product-card">
+            <img src="img/tehana/snapedit_1744203597723.png" alt="red tahena">
+            <h2>red tahena</h2>
+            <div class="weight">
+                <p>130LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="el-4 product-card">
+            <img class="ta" src="img/tehana/snapedit_1744203447445.png" alt="white tahena">
+            <h2>white tahena</h2>
+            <div class="weight">
+                <p>130LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="el-5 product-card">
+            <a href="el5.html">
+                <img class="ol" src="img/oil/olives_oil-removebg-preview.png" alt="olives oil">
+            </a>
+            <h2>olives oil</h2>
+            <div class="weight">
+                <p>360LE</p>
+                <p>1L</p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+    </div>
+
+    <div class="border">
+    <h2 class="section-title">Makarona</h2>
+    </div>
+    <div class="con-c-3">
+        <div class="el product-card">
+            <img src="img/makarona/El-Maleka-Pasta-Spaghetti-400-.jpg" alt="Pasta">
+            <h2>Elmalika makarona Pasta</h2>
+            <div class="weight">
+                <p>50LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="el-2 product-card">
+            <img src="img/makarona/مكرونة-فرنن-1k.jpg" alt="Elmaleka makarona">
+            <h2>Elmalika makarona pasta</h2>
+            <div class="weight">
+                <p>35LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="el-3 product-card">
+            <img src="img/makarona/Bundling-1k.png" alt="Elmaleka makarona">
+            <h2>ELmalica Bundling makarona</h2>
+            <div class="weight">
+                <p>30LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="el-4 product-card">
+            <img class="ta" src="img/makarona/malika-makarona-cyrcile-500g.jpg" alt="Elmaleka makarona">
+            <h2>ELmalika cyrcel makarona</h2>
+            <div class="weight">
+                <p>60LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+        <div class="el-5 product-card">
+            <a href="el5.html">
+                <img class="ol" src="img/makarona/elmalika-makarona-rings.png" alt="Elmaleka makarona">
+            </a>
+            <h2>ELmalika runing makarona</h2>
+            <div class="weight">
+                <p>60LE</p>
+                <p>1<i class="fa-solid fa-weight-scale"></i></p>
+            </div>
+            <button id="addToCartBtn">add to cart</button>
+        </div>
+    </div>
+</section>
+
+<script type="module">
+    // Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    // **هام جداً: استبدل هذه القيم ببيانات مشروع Firebase الخاص بك**
+    const firebaseConfig = {
+      apiKey: "AIzaSyDe6oVfkbNUHuPDL1ANq_HLVEHh4skz7Zc",
+      authDomain: "login-94455.firebaseapp.com",
+      projectId: "login-94455",
+      storageBucket: "login-94455.appspot.com",
+      messagingSenderId: "132525539202",
+      appId: "1:132525539202:web:b490f6c4c156398480d99b",
+      measurementId: "G-087D0K7000" // قد يكون هذا اختياريًا
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const signInButtonHome = document.getElementById('signInButtonHome');
+    const userNameDisplay = document.getElementById('userNameDisplay');
+
+    onAuthStateChanged(auth, (user) => {
+        console.log('Home - Auth State Changed:', user); // للتحقق من حالة المستخدم في وحدة التحكم
+        if (user) {
+            // User is signed in
+            if (signInButtonHome) {
+                signInButtonHome.style.display = 'none';
+            }
+            if (userNameDisplay) {
+                const displayName = user.displayName;
+                if (displayName) {
+                    const firstName = displayName.split(' ')[0];
+                    userNameDisplay.textContent = `Welcome, ${firstName}`;
+                    userNameDisplay.style.display = 'inline';
+                } else {
+                    userNameDisplay.textContent = `Welcome, ${user.email}`;
+                    userNameDisplay.style.display = 'inline';
+                }
+            }
+        } else {
+            // User is signed out
+            if (signInButtonHome) {
+                signInButtonHome.style.display = 'inline';
+            }
+            if (userNameDisplay) {
+                userNameDisplay.style.display = 'none';
+                userNameDisplay.textContent = '';
+            }
+            // Optionally redirect to login page:
+            // window.location.href = 'login.html';
+        }
+    });
+
+    document.querySelectorAll('button').forEach(button => {
+        if (button.textContent.toLowerCase().includes("add to cart")) {
+            button.addEventListener('click', function () {
+                const productName = this.closest('div').querySelector('h2')?.innerText || "منتج";
+                const priceText = this.closest('div').querySelector('.weight p')?.innerText || "0";
+                const productPrice = parseFloat(priceText.replace(/[^0-9.]/g, ''));
+
+                Swal.fire("تمت الإضافة", `${productName} تمت إضافته إلى السلة ✅`, "success").then(() => {
+                    const product = {
+                        id: Date.now().toString(),
+                        name: productName,
+                        price: productPrice,
+                        quantity: 1
+                    };
+
+                    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                    const existingProductIndex = cart.findIndex(item => item.name === product.name);
+
+                    if (existingProductIndex !== -1) {
+                        cart[existingProductIndex].quantity += 1;
+                    } else {
+                        cart.push(product);
+                    }
+
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                });
+            });
+        }
+    });
+
+    function filterProducts() {
+        const search = document.getElementById('searchInput').value.toLowerCase();
+        const productContainers = document.querySelectorAll('.parent-img, .con-c-2, .con-c-3');
+        const noResultsMessage = document.getElementById('noResultsMessage');
+        let anyVisibleInSection;
+
+        productContainers.forEach(container => {
+            const productCards = container.querySelectorAll('.product-card'); // استخدام الكلاس الجديد
+            anyVisibleInSection = false;
+
+            productCards.forEach(card => {
+                const name = card.querySelector('h2')?.innerText.toLowerCase() || '';
+                if (name.includes(search)) {
+                    card.style.display = "flex"; // أو "inline-block" لو كنت بتستخدم flexbox أصلاً
+                    anyVisibleInSection = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            const sectionTitle = container.previousElementSibling;
+            if (sectionTitle && sectionTitle.classList.contains('section-title')) {
+                sectionTitle.style.display = anyVisibleInSection || search.trim() === "" ? "block" : "none";
+            }
+
+            container.style.display = anyVisibleInSection ? "grid" : "none";
+        });
+
+        // التعامل مع رسالة "لا يوجد منتجات مطابقة"
+        const allCards = document.querySelectorAll('.product-card');
+        const visibleCards = Array.from(allCards).filter(card => card.style.display !== 'none');
+
+        if (!noResultsMessage) {
+            const noResultsMessageElement = document.createElement('h2');
+            noResultsMessageElement.id = 'noResultsMessage';
+            noResultsMessageElement.style.display = "none";
+            noResultsMessageElement.style.textAlign = "center";
+            noResultsMessageElement.style.marginTop = "20px";
+            noResultsMessageElement.style.color = "gray";
+            noResultsMessageElement.style.fontSize = "1.5rem";
+            noResultsMessageElement.style.opacity = "0";
+            noResultsMessageElement.style.transition = "opacity 0.5s ease";
+            noResultsMessageElement.innerText = "لا يوجد منتجات مطابقة.";
+            document.querySelector('.container-cards').appendChild(noResultsMessageElement);
+        }
+
+        const noResultsMessageElement = document.getElementById('noResultsMessage');
+        if (noResultsMessageElement) {
+            noResultsMessageElement.style.display = visibleCards.length === 0 && search.trim() !== "" ? "block" : "none";
+            setTimeout(() => {
+                noResultsMessageElement.style.opacity = visibleCards.length === 0 && search.trim() !== "" ? "1" : "0";
+            }, 50);
+        }
+    }
+
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', filterProducts);
+    }
+</script>
+
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  function toggleMenu() {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  }
+</script>
+</body>
+</html>

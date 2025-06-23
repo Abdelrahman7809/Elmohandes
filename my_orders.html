@@ -1,0 +1,384 @@
+<!-- <!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>طلباتي</title>
+  <link rel="icons" href="img/favicon-32x32.png">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    .order {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .clear-btn {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #c0392b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+
+body {
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  background-color: #f0f0f0;
+  padding: 20px;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.order {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.order p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+a {
+  display: inline-block;
+  margin: 10px 5px;
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .order {
+    padding: 10px;
+  }
+
+  .order p {
+    font-size: 14px;
+  }
+
+  a {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 0;
+  }
+
+  h1 {
+    color: #333;
+    text-align: center;
+  }
+
+  .order {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .order p {
+    margin: 6px 0;
+    font-size: 15px;
+  }
+
+  .order hr {
+    margin: 10px 0;
+  }
+
+  .btn-link {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    margin: 5px 3px;
+    background-color: #1c1c1c;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s ease;
+  }
+
+  .btn-link.green {
+    background-color: green;
+  }
+
+  .btn-link:hover {
+    opacity: 0.85;
+  }
+
+  @media (max-width: 600px) {
+    .btn-link {
+      font-size: 13px;
+      padding: 8px 10px;
+      width: 100%;
+      margin: 0px 0px 60px 20px;
+    }
+    .btn-link.green{
+      margin-top:-60px ;
+    }
+
+    .order {
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: 22px;
+    }
+  }
+
+
+  </style>
+</head>
+
+<body>
+  <h1>طلباتي</h1>
+  <div id="ordersContainer" style="padding: 1rem; background: white; border-radius: 10px;"></div>
+ <button onclick="clearOrders()" class="clear-btn">مسح كل الطلبات</button>
+  <a href="cart.html" class="btn-link" style="color: #dcdcdc; padding: 12px 11px; font-size: 20px; margin-top: 120px; margin-right: 20px; text-decoration: none; background: #1c1c1c; border-radius: 8px;">العوده الي السله</a>
+  <a href="track.html" class="btn-link green" style="color: #dcdcdc; padding: 12px 10px; font-size: 20px; margin-top: 120px; margin-right: 20px; text-decoration: none; background: green; border-radius: 8px;">تتبع الطلب</a>
+   
+
+  <script>
+
+  const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+
+
+orders.forEach(order => {
+    const orderElement = document.createElement("div");
+    orderElement.classList.add("order");
+
+    const items = order.items || [];
+    let html = `<h4>🕒 ${order.date || 'غير متوفر'}</h4>`;
+    html += `<p><strong>رقم الطلب:</strong> ${order.id || 'غير متوفر'}</p>`;
+
+    items.forEach(item => {
+        html += `
+            <p><strong>المنتج:</strong> ${item.name || 'غير معروف'}</p>
+            <p><strong>الكمية:</strong> ${item.quantity || 0}</p>
+            <p><strong>السعر:</strong> ${item.price || 0} LE</p>
+            <hr>
+        `;
+    });
+
+    orderElement.innerHTML = html;
+    ordersContainer.appendChild(orderElement);
+});
+
+
+if (orders.length === 0) {
+    document.getElementById("ordersContainer").innerHTML = "<p>لا توجد طلبات بعد.</p>";
+} else {
+    orders.forEach(order => {
+        // كود عرض الطلبات...
+    });
+}
+
+
+
+    // function clearOrders() {
+    //   localStorage.removeItem("orders");
+    //   location.reload();
+    // }
+
+  </script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>طلباتي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="img/favicon-32x32.png" />
+
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+      background-color: #f0f0f0;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      font-size: 26px;
+    }
+
+    .order {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .order p {
+      margin: 6px 0;
+      font-size: 15px;
+    }
+
+    .order hr {
+      margin: 10px 0;
+    }
+
+    .btn-link {
+      display: inline-block;
+      padding: 8px 12px;
+      font-size: 14px;
+      margin: 5px 3px;
+      background-color: #1c1c1c;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .btn-link.green {
+      background-color: green;
+    }
+
+    .btn-link:hover {
+      opacity: 0.85;
+    }
+
+    .buttons-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .btn-link {
+        font-size: 13px;
+        padding: 10px;
+        width: 90%;
+        margin: 6px auto;
+        display: block;
+      }
+
+      .order {
+        font-size: 14px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>طلباتي</h1>
+
+  <div id="ordersContainer" style="padding: 1rem;"></div>
+
+  <div class="buttons-container">
+    <a href="cart.html" class="btn-link">العودة إلى السلة</a>
+    <a href="track.html" class="btn-link green">تتبع الطلب</a>
+  </div>
+
+  <script>
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const ordersContainer = document.getElementById("ordersContainer");
+
+    if (orders.length === 0) {
+      ordersContainer.innerHTML = "<p style='text-align:center;'>لا توجد طلبات حالياً.</p>";
+    }
+
+    orders.forEach(order => {
+      const orderElement = document.createElement("div");
+      orderElement.classList.add("order");
+
+      let html = `<h4>🕒 ${order.date || 'غير متوفر'}</h4>`;
+      html += `<p><strong>رقم الطلب:</strong> ${order.id || 'غير متوفر'}</p>`;
+
+      (order.items || []).forEach(item => {
+        html += `
+          <p><strong>المنتج:</strong> ${item.name || 'غير معروف'}</p>
+          <p><strong>الكمية:</strong> ${item.quantity || 0}</p>
+          <p><strong>السعر:</strong> ${item.price || 0} LE</p>
+          <hr>
+        `;
+      });
+
+      orderElement.innerHTML = html;
+      ordersContainer.appendChild(orderElement);
+    });
+  </script>
+</body>
+</html>
+
